@@ -51,7 +51,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
-        // Add a marker in Sydney and move the camera
         // LatLng sydney = new LatLng(-34, 151);
         LatLng teruel = new LatLng(40.3456, -1.10646);
         LatLng elajo = new LatLng(40.347646, -1.106432);
