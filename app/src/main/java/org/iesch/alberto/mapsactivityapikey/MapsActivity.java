@@ -31,36 +31,57 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+
+        //Le decimos que los estilos de mapa que queremos que use estan en el recurso json que nos hemos generado.
         try {
-            // Customise the styling of the base map using a JSON object defined
-            // in a raw resource file.
             boolean success = googleMap.setMapStyle(
                     MapStyleOptions.loadRawResourceStyle(
                             this, R.raw.style_json));
 
             if (!success) {
-                Log.e("TAG", "Style parsing failed.");
+                Log.e("TAG", "Existe el recurso pero está mal");
             }
         } catch (Resources.NotFoundException e) {
-            Log.e("TAG", "Can't find style. Error: ", e);
+            Log.e("TAG", "El objeto Json no existe en la ubicacion que le indici. Error: ", e);
         }
 
 
 
         mMap = googleMap;
-
+        //El tipo de mapa que queremos que cargue es Normal. (Puede ser Satelite, hibrido..., etc)
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
-        // LatLng sydney = new LatLng(-34, 151);
-        LatLng teruel = new LatLng(40.3456, -1.10646);
-        LatLng elajo = new LatLng(40.347646, -1.106432);
+        // Nos creamos el objeto LatLng que posiciona TERUEL
+        LatLng teruel = new LatLng(40.336192, -1.107440);
 
+        // Nos creamos el objeto LatLng que posiciona las tres oficinas que tenemos
+        LatLng oficina1 = new LatLng(40.336139, -1.104079);
+        LatLng oficina2 = new LatLng(40.341565, -1.107254);
+        LatLng oficina3 = new LatLng(40.332114, -1.108394);
+
+        //Situamos los marcadores de las tres oficinas en el mapa. Ademas los personalizamos.
         mMap.addMarker(
                 new MarkerOptions()
-                        .position(elajo)
-                        .title("PEÑA EL AJO")
-                        .snippet("A.C Peña el AJo - Concierto de la pegatina")
-                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
+                        .position(oficina1)
+                        .title("Oficina 1")
+                        .snippet("Tfno: 987 654 321")
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.alfiler))
+
+        );
+        mMap.addMarker(
+                new MarkerOptions()
+                        .position(oficina2)
+                        .title("Oficina 2")
+                        .snippet("Tfno: 874 234 765")
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.alfiler))
+
+        );
+        mMap.addMarker(
+                new MarkerOptions()
+                        .position(oficina3)
+                        .title("Oficina 3")
+                        .snippet("Tfno: 978 237 432")
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.alfiler))
 
         );
         mMap.moveCamera(CameraUpdateFactory.newLatLng(teruel));
