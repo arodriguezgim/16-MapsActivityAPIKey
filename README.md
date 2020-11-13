@@ -7,3 +7,5 @@ Aprendemos a gestionar los Mapas de Google
 https://developers.google.com/maps/documentation/android-sdk/start
 - La documentacion para gestionar los Markers:
 https://developers.google.com/maps/documentation/android-sdk/marker?hl=es-419
+- Para obtener la localizacion del dispositivo debeis seguir los siguientes pasos:
+https://developers.google.com/maps/documentation/android-sdk/location
